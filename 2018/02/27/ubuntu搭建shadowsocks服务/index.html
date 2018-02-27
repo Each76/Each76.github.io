@@ -5,18 +5,20 @@
   
 
   
-  <title>Archiv | Each&#39;s Blog</title>
+  <title>ubuntu搭建shadowsocks服务 | Each&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Each&apos;s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Each&#39;s Blog">
-<meta property="og:url" content="each76.com/archives/index.html">
+  <meta name="description" content="环境 ubuntu 16.04开始 安装Shadowsocks  sudo apt-get update  sudo apt-get install python-gevent python-pip  sudo pip install shadowsocks  apt-get install python-m2crypto在新版本的python中包含了一些，不用再次安装。 配置Shadowsock">
+<meta name="keywords" content="ubuntu,shadowsocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu搭建shadowsocks服务">
+<meta property="og:url" content="each76.com/2018/02/27/ubuntu搭建shadowsocks服务/index.html">
 <meta property="og:site_name" content="Each&#39;s Blog">
-<meta property="og:description" content="Each&apos;s Blog">
+<meta property="og:description" content="环境 ubuntu 16.04开始 安装Shadowsocks  sudo apt-get update  sudo apt-get install python-gevent python-pip  sudo pip install shadowsocks  apt-get install python-m2crypto在新版本的python中包含了一些，不用再次安装。 配置Shadowsock">
 <meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-02-27T05:53:36.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Each&#39;s Blog">
-<meta name="twitter:description" content="Each&apos;s Blog">
+<meta name="twitter:title" content="ubuntu搭建shadowsocks服务">
+<meta name="twitter:description" content="环境 ubuntu 16.04开始 安装Shadowsocks  sudo apt-get update  sudo apt-get install python-gevent python-pip  sudo pip install shadowsocks  apt-get install python-m2crypto在新版本的python中包含了一些，不用再次安装。 配置Shadowsock">
   
     <link rel="alternate" href="/atom.xml" title="Each&#39;s Blog" type="application/atom+xml">
   
@@ -67,59 +69,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/02/27/ubuntu搭建shadowsocks服务/" class="archive-article-date">
-  <time datetime="2018-02-27T05:25:39.000Z" itemprop="datePublished">Feb 27</time>
+        <section id="main"><article id="post-ubuntu搭建shadowsocks服务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/27/ubuntu搭建shadowsocks服务/" class="article-date">
+  <time datetime="2018-02-27T05:25:39.000Z" itemprop="datePublished">2018-02-27</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/成长日记/">成长日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/27/ubuntu搭建shadowsocks服务/">ubuntu搭建shadowsocks服务</a>
+    <h1 class="article-title" itemprop="name">
+      ubuntu搭建shadowsocks服务
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/02/26/hello-world/" class="archive-article-date">
-  <time datetime="2018-02-26T11:33:25.062Z" itemprop="datePublished">Feb 26</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/hello-world/">Hello World</a>
-    </h1>
-  
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li><h1 id="ubuntu-16-04"><a href="#ubuntu-16-04" class="headerlink" title="ubuntu 16.04"></a>ubuntu 16.04</h1><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1></li>
+<li><strong>安装Shadowsocks</strong><br>  sudo apt-get update<br>  sudo apt-get install python-gevent python-pip<br>  sudo pip install shadowsocks<br>  apt-get install python-m2crypto<br>在新版本的python中包含了一些，不用再次安装。</li>
+<li><strong>配置Shadowsocks</strong><br>创建config.json配置文件:<br>  sudo vim /etc/shadowsocks.json<br>添加以下内容:<br>  {<pre><code>&quot;server&quot;:&quot;0.0.0.0&quot;,
+&quot;server_port&quot;:8388,
+ &quot;local_port&quot;:1080,
+&quot;password&quot;:&quot;password&quot;,
+&quot;timeout&quot;:600,
+&quot;method&quot;:&quot;aes-256-cfb&quot;
+</code></pre>  }<br>修改server为你的主机的IP。<br>修改password为你的密码。</li>
+<li><strong>配置防火墙</strong><br>打开server_port端口</li>
+<li><strong>运行Shadowsocks和关闭Shadowsocks</strong><br>  sudo ssserver -c /etc/shadowsocks.json -d start<br>  sudo ssserver -c /etc/shadowsocks.json -d stop</li>
+</ul>
+<p>至此，shadowsocks的小梯子已经搭好。</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="each76.com/2018/02/27/ubuntu搭建shadowsocks服务/" data-id="cje58lce50001qfn7cvnzdxg1" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/02/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

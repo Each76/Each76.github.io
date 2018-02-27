@@ -69,6 +69,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ubuntu搭建shadowsocks服务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/27/ubuntu搭建shadowsocks服务/" class="article-date">
+  <time datetime="2018-02-27T05:25:39.000Z" itemprop="datePublished">2018-02-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/成长日记/">成长日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/27/ubuntu搭建shadowsocks服务/">ubuntu搭建shadowsocks服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li><h1 id="ubuntu-16-04"><a href="#ubuntu-16-04" class="headerlink" title="ubuntu 16.04"></a>ubuntu 16.04</h1><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1></li>
+<li><strong>安装Shadowsocks</strong><br>  sudo apt-get update<br>  sudo apt-get install python-gevent python-pip<br>  sudo pip install shadowsocks<br>  apt-get install python-m2crypto<br>在新版本的python中包含了一些，不用再次安装。</li>
+<li><strong>配置Shadowsocks</strong><br>创建config.json配置文件:<br>  sudo vim /etc/shadowsocks.json<br>添加以下内容:<br>  {<pre><code>&quot;server&quot;:&quot;0.0.0.0&quot;,
+&quot;server_port&quot;:8388,
+ &quot;local_port&quot;:1080,
+&quot;password&quot;:&quot;password&quot;,
+&quot;timeout&quot;:600,
+&quot;method&quot;:&quot;aes-256-cfb&quot;
+</code></pre>  }<br>修改server为你的主机的IP。<br>修改password为你的密码。</li>
+<li><strong>配置防火墙</strong><br>打开server_port端口</li>
+<li><strong>运行Shadowsocks和关闭Shadowsocks</strong><br>  sudo ssserver -c /etc/shadowsocks.json -d start<br>  sudo ssserver -c /etc/shadowsocks.json -d stop</li>
+</ul>
+<p>至此，shadowsocks的小梯子已经搭好。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="each76.com/2018/02/27/ubuntu搭建shadowsocks服务/" data-id="cje58lce50001qfn7cvnzdxg1" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/26/hello-world/" class="article-date">
@@ -104,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cje5408vn00009en7mgr1beht" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cje58lcdj0000qfn7hv6v2cmg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -121,12 +177,33 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/成长日记/">成长日记</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -143,6 +220,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/02/27/ubuntu搭建shadowsocks服务/">ubuntu搭建shadowsocks服务</a>
+          </li>
         
           <li>
             <a href="/2018/02/26/hello-world/">Hello World</a>
