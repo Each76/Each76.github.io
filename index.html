@@ -96,24 +96,41 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li><h1 id="ubuntu-16-04"><a href="#ubuntu-16-04" class="headerlink" title="ubuntu 16.04"></a>ubuntu 16.04</h1><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1></li>
-<li><strong>安装Shadowsocks</strong><br>  sudo apt-get update<br>  sudo apt-get install python-gevent python-pip<br>  sudo pip install shadowsocks<br>  apt-get install python-m2crypto<br>在新版本的python中包含了一些，不用再次安装。</li>
-<li><strong>配置Shadowsocks</strong><br>创建config.json配置文件:<br>  sudo vim /etc/shadowsocks.json<br>添加以下内容:<br>  {<pre><code>&quot;server&quot;:&quot;0.0.0.0&quot;,
-&quot;server_port&quot;:8388,
- &quot;local_port&quot;:1080,
-&quot;password&quot;:&quot;password&quot;,
-&quot;timeout&quot;:600,
-&quot;method&quot;:&quot;aes-256-cfb&quot;
-</code></pre>  }<br>修改server为你的主机的IP。<br>修改password为你的密码。</li>
-<li><strong>配置防火墙</strong><br>打开server_port端口</li>
-<li><strong>运行Shadowsocks和关闭Shadowsocks</strong><br>  sudo ssserver -c /etc/shadowsocks.json -d start<br>  sudo ssserver -c /etc/shadowsocks.json -d stop</li>
+<li>ubuntu 16.04</li>
 </ul>
-<p>至此，shadowsocks的小梯子已经搭好。</p>
+<hr>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><ul>
+<li><p><strong>安装Shadowsocks</strong></p>
+<pre><code>sudo apt-get update
+sudo apt-get install python-gevent python-pip
+sudo pip install shadowsocks
+apt-get install python-m2crypto
+</code></pre><p>在新版本的python中包含了一些，不用再次安装。</p>
+</li>
+<li><p><strong>配置Shadowsocks</strong><br>创建config.json配置文件:<br>  sudo vim /etc/shadowsocks.json<br>添加以下内容:</p>
+<pre><code>{
+    &quot;server&quot;:&quot;0.0.0.0&quot;,
+    &quot;server_port&quot;:8388,
+    &quot;local_port&quot;:1080,
+    &quot;password&quot;:&quot;password&quot;,
+    &quot;timeout&quot;:600,
+    &quot;method&quot;:&quot;aes-256-cfb&quot;
+}
+</code></pre><p>修改server为你的主机的IP。<br>修改password为你的密码。</p>
+</li>
+<li><p><strong>配置防火墙</strong><br>打开server_port端口</p>
+</li>
+<li><p><strong>运行Shadowsocks和关闭Shadowsocks</strong></p>
+<pre><code>sudo ssserver -c /etc/shadowsocks.json -d start
+sudo ssserver -c /etc/shadowsocks.json -d stop
+</code></pre></li>
+</ul>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>至此，shadowsocks的小梯子已经搭好。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/27/ubuntu搭建shadowsocks服务/" data-id="cje58lce50001qfn7cvnzdxg1" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/27/ubuntu搭建shadowsocks服务/" data-id="cje58o8qq0001rcn7verymz1w" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -160,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cje58lcdj0000qfn7hv6v2cmg" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cje58o8pz0000rcn7ofslud7p" class="article-share-link">Teilen</a>
       
       
     </footer>
