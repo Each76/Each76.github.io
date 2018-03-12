@@ -5,20 +5,20 @@
   
 
   
-  <title>ubuntu搭建shadowsocks服务 | Each&#39;s Blog</title>
+  <title>Arduino UNO直接驱动NOKIA 5110显示器模块 | Each&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境 ubuntu 16.04   开始 安装Shadowsocks sudo apt-get update sudo apt-get install python-gevent python-pip sudo pip install shadowsocks apt-get install python-m2crypto 在新版本的python中包含了一些，不用再次安装。  配置Shadowsoc">
-<meta name="keywords" content="ubuntu,shadowsocks">
+  <meta name="description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
+<meta name="keywords" content="Arduino,嵌入式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu搭建shadowsocks服务">
-<meta property="og:url" content="each76.com/2018/02/27/:category/buildss/index.html">
+<meta property="og:title" content="Arduino UNO直接驱动NOKIA 5110显示器模块">
+<meta property="og:url" content="each76.com/2018/03/12/:category/arduinolcd/index.html">
 <meta property="og:site_name" content="Each&#39;s Blog">
-<meta property="og:description" content="环境 ubuntu 16.04   开始 安装Shadowsocks sudo apt-get update sudo apt-get install python-gevent python-pip sudo pip install shadowsocks apt-get install python-m2crypto 在新版本的python中包含了一些，不用再次安装。  配置Shadowsoc">
+<meta property="og:description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2018-02-27T06:22:22.697Z">
+<meta property="og:updated_time" content="2018-03-12T13:30:32.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu搭建shadowsocks服务">
-<meta name="twitter:description" content="环境 ubuntu 16.04   开始 安装Shadowsocks sudo apt-get update sudo apt-get install python-gevent python-pip sudo pip install shadowsocks apt-get install python-m2crypto 在新版本的python中包含了一些，不用再次安装。  配置Shadowsoc">
+<meta name="twitter:title" content="Arduino UNO直接驱动NOKIA 5110显示器模块">
+<meta name="twitter:description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
   
     <link rel="alternate" href="/atom.xml" title="Each&#39;s Blog" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-:category/buildss" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-:category/arduinolcd" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/27/:category/buildss/" class="article-date">
-  <time datetime="2018-02-27T05:25:39.000Z" itemprop="datePublished">2018-02-27</time>
+    <a href="/2018/03/12/:category/arduinolcd/" class="article-date">
+  <time datetime="2018-03-12T11:59:54.000Z" itemprop="datePublished">2018-03-12</time>
 </a>
     
   <div class="article-category">
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ubuntu搭建shadowsocks服务
+      Arduino UNO直接驱动NOKIA 5110显示器模块
     </h1>
   
 
@@ -95,45 +95,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
-<li>ubuntu 16.04</li>
+        <p>#环境</p>
+<ul>
+<li>诺基亚 LCD 5110</li>
+<li>Arduino UNO R3</li>
+<li>LCD5110_Basic.h <a href="http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip" target="_blank" rel="noopener">http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip</a></li>
 </ul>
 <hr>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><ul>
-<li><p><strong>安装Shadowsocks</strong></p>
-<pre><code>sudo apt-get update
-sudo apt-get install python-gevent python-pip
-sudo pip install shadowsocks
-apt-get install python-m2crypto
-</code></pre><p>在新版本的python中包含了一些，不用再次安装。</p>
-</li>
-<li><p><strong>配置Shadowsocks</strong><br>创建config.json配置文件:<br>  sudo vim /etc/shadowsocks.json<br>添加以下内容:</p>
-<pre><code>{
-    &quot;server&quot;:&quot;0.0.0.0&quot;,
-    &quot;server_port&quot;:8388,
-    &quot;local_port&quot;:1080,
-    &quot;password&quot;:&quot;password&quot;,
-    &quot;timeout&quot;:600,
-    &quot;method&quot;:&quot;aes-256-cfb&quot;
-}
-</code></pre><p>修改server为你的主机的IP。<br>修改password为你的密码。</p>
-</li>
-<li><p><strong>配置防火墙</strong><br>打开server_port端口</p>
-</li>
-<li><p><strong>运行Shadowsocks和关闭Shadowsocks</strong></p>
-<pre><code>sudo ssserver -c /etc/shadowsocks.json -d start
-sudo ssserver -c /etc/shadowsocks.json -d stop
-</code></pre></li>
+<h1 id="开始-PART1"><a href="#开始-PART1" class="headerlink" title="开始 PART1"></a>开始 PART1</h1><ul>
+<li>LCD 各引脚说明</li>
 </ul>
-<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>至此，shadowsocks的小梯子已经搭好。</p>
+<ol>
+<li>RST —— 复位</li>
+<li>CE  —— 片选</li>
+<li>DC  —— 数据/指令选择</li>
+<li>DIN —— 串行数据线</li>
+<li>CLK —— 串行时钟线</li>
+<li>VCC —— 电源输入</li>
+<li>BL  —— 背光控制端</li>
+<li>GND —— 地线</li>
+</ol>
+<ul>
+<li><p>接线<br>Arduino | Nokia 5100<br>:—–: | :——–:<br>3       | CLK<br>4       | DIN<br>5       | DC<br>6       | RST<br>7       | CE<br>5V      | VCC<br>3V3     | BL<br>GND     | GND</p>
+</li>
+<li><p>示例程序<br>  #include &lt;LCD5110_Basic.h&gt;<br>  LCD5110 myGLCD(3,4,5,6,7);<br>  extern uint8_t SmallFont[];<br>  extern uint8_t MediumNumbers[];<br>  extern uint8_t BigNumbers[];<br>  void setup()<br>  {</p>
+<pre><code>myGLCD.InitLCD(); //Intializing LCD
+</code></pre><p>  }</p>
+<p>  void loop()<br>  {</p>
+<pre><code>myGLCD.setFont(SmallFont);
+myGLCD.print(&quot;Hello World&quot;,CENTER,16);
+  delay(1000);
+myGLCD.clrScr();
+myGLCD.print(&quot;Hello Arduino&quot;,CENTER,16);
+delay(1000);
+myGLCD.clrScr();
+</code></pre><p>  }</p>
+</li>
+<li><p>常用函数<br>LCD5110(SCK,MOSI,DC,RST,CS);//设置引脚<br>InitLCD([contrast]);//初始化<br>setContrast(contrast);//设置对比度(0-127)<br>enableSleep();//设置睡眠状态<br>disableSleep();//关闭睡眠状态<br>clrScr();//清屏<br>clrRow(row[,start_x[,end_x]]);//清除行的一部分或者整行<br>invert(mode);//倒置<br>print(st,x,y);//显示字符串<br>printNumI(num,x,y[,length[,filler]]);//显示整数<br>printNumF(num,dec,x,y[,divider[,length[,filler]]]);//显示小数<br>setFont(fontname);//设置字体大小<br>drawBitmap(x,y,data,sx,sy);//用于显示自定义字符</p>
+</li>
+</ul>
+<h1 id="进阶-PART2"><a href="#进阶-PART2" class="headerlink" title="进阶 PART2"></a>进阶 PART2</h1><p>未完待续</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/27/:category/buildss/" data-id="cjeo9msn000045fn7jndb51dl" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9msky00005fn7qhvxnlr9" class="article-share-link">Teilen</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
 
     </footer>
   </div>
@@ -141,19 +150,10 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
     
 <nav id="article-nav">
   
-    <a href="/2018/03/12/:category/arduinolcd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          Arduino UNO直接驱动NOKIA 5110显示器模块
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/02/27/:category/buildss/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">ubuntu搭建shadowsocks服务</div>
     </a>
   
 </nav>
