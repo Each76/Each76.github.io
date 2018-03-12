@@ -118,19 +118,27 @@
 <ul>
 <li><p>接线<br>Arduino | Nokia 5100<br>:—–: | :——–:<br>3       | CLK<br>4       | DIN<br>5       | DC<br>6       | RST<br>7       | CE<br>5V      | VCC<br>3V3     | BL<br>GND     | GND</p>
 </li>
-<li><p>示例程序<br>  #include &lt;LCD5110_Basic.h&gt;<br>  LCD5110 myGLCD(3,4,5,6,7);<br>  extern uint8_t SmallFont[];<br>  extern uint8_t MediumNumbers[];<br>  extern uint8_t BigNumbers[];<br>  void setup()<br>  {</p>
-<pre><code>myGLCD.InitLCD(); //Intializing LCD
-</code></pre><p>  }</p>
-<p>  void loop()<br>  {</p>
-<pre><code>myGLCD.setFont(SmallFont);
-myGLCD.print(&quot;Hello World&quot;,CENTER,16);
-  delay(1000);
-myGLCD.clrScr();
-myGLCD.print(&quot;Hello Arduino&quot;,CENTER,16);
-delay(1000);
-myGLCD.clrScr();
-</code></pre><p>  }</p>
-</li>
+<li><p>示例程序</p>
+<pre><code>#include &lt;LCD5110_Basic.h&gt;
+LCD5110 myGLCD(3,4,5,6,7);
+extern uint8_t SmallFont[];
+extern uint8_t MediumNumbers[];
+extern uint8_t BigNumbers[];
+void setup()
+{
+    myGLCD.InitLCD(); //Intializing LCD
+}
+void loop()
+{
+    myGLCD.setFont(SmallFont);
+    myGLCD.print(&quot;Hello World&quot;,CENTER,16);
+      delay(1000);
+    myGLCD.clrScr();
+    myGLCD.print(&quot;Hello Arduino&quot;,CENTER,16);
+    delay(1000);
+    myGLCD.clrScr();
+}
+</code></pre></li>
 <li><p>常用函数<br>LCD5110(SCK,MOSI,DC,RST,CS);//设置引脚<br>InitLCD([contrast]);//初始化<br>setContrast(contrast);//设置对比度(0-127)<br>enableSleep();//设置睡眠状态<br>disableSleep();//关闭睡眠状态<br>clrScr();//清屏<br>clrRow(row[,start_x[,end_x]]);//清除行的一部分或者整行<br>invert(mode);//倒置<br>print(st,x,y);//显示字符串<br>printNumI(num,x,y[,length[,filler]]);//显示整数<br>printNumF(num,dec,x,y[,divider[,length[,filler]]]);//显示小数<br>setFont(fontname);//设置字体大小<br>drawBitmap(x,y,data,sx,sy);//用于显示自定义字符</p>
 </li>
 </ul>
@@ -139,7 +147,7 @@ myGLCD.clrScr();
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9msky00005fn7qhvxnlr9" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9siov000086n7ui132ioe" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
@@ -212,7 +220,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/27/:category/buildss/" data-id="cjeo9msn000045fn7jndb51dl" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/27/:category/buildss/" data-id="cjeo9sirg000486n7t3crr7dm" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -259,7 +267,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cjeo9mslk00015fn7xoiyn2fh" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cjeo9siq3000186n7n16lmqq5" class="article-share-link">Teilen</a>
       
       
     </footer>
