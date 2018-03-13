@@ -7,18 +7,18 @@
   
   <title>Arduino UNO直接驱动NOKIA 5110显示器模块 | Each&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
+  <meta name="description" content="环境 诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 CLK">
 <meta name="keywords" content="Arduino,嵌入式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arduino UNO直接驱动NOKIA 5110显示器模块">
 <meta property="og:url" content="each76.com/2018/03/12/:category/arduinolcd/index.html">
 <meta property="og:site_name" content="Each&#39;s Blog">
-<meta property="og:description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
+<meta property="og:description" content="环境 诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 CLK">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2018-03-12T13:34:55.086Z">
+<meta property="og:updated_time" content="2018-03-13T05:09:47.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arduino UNO直接驱动NOKIA 5110显示器模块">
-<meta name="twitter:description" content="#环境  诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 C">
+<meta name="twitter:description" content="环境 诺基亚 LCD 5110 Arduino UNO R3 LCD5110_Basic.h http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip   开始 PART1 LCD 各引脚说明   RST —— 复位 CE  —— 片选 DC  —— 数据/指令选择 DIN —— 串行数据线 CLK">
   
     <link rel="alternate" href="/atom.xml" title="Each&#39;s Blog" type="application/atom+xml">
   
@@ -95,8 +95,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#环境</p>
-<ul>
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
 <li>诺基亚 LCD 5110</li>
 <li>Arduino UNO R3</li>
 <li>LCD5110_Basic.h <a href="http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip" target="_blank" rel="noopener">http://www.rinkydinkelectronics.com/no_deep_linking.php?file=LCD5110_Basic.zip</a></li>
@@ -116,8 +115,51 @@
 <li>GND —— 地线</li>
 </ol>
 <ul>
-<li><p>接线<br>Arduino | Nokia 5100<br>:—–: | :——–:<br>3       | CLK<br>4       | DIN<br>5       | DC<br>6       | RST<br>7       | CE<br>5V      | VCC<br>3V3     | BL<br>GND     | GND</p>
-</li>
+<li>接线</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Arduino UNO</th>
+<th style="text-align:center">Nokia 5100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">CLK</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">DIN</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">DC</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">RST</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">CE</td>
+</tr>
+<tr>
+<td style="text-align:center">5V</td>
+<td style="text-align:center">VCC</td>
+</tr>
+<tr>
+<td style="text-align:center">3V3</td>
+<td style="text-align:center">BL</td>
+</tr>
+<tr>
+<td style="text-align:center">GND</td>
+<td style="text-align:center">GND</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>示例程序</p>
 <pre><code>#include &lt;LCD5110_Basic.h&gt;
 LCD5110 myGLCD(3,4,5,6,7);
@@ -147,7 +189,7 @@ void loop()
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9siov000086n7ui132ioe" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9vqta00008xn7z25j0y2z" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
