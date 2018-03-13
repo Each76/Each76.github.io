@@ -174,7 +174,7 @@ void loop()
 {
     myGLCD.setFont(SmallFont);
     myGLCD.print(&quot;Hello World&quot;,CENTER,16);
-      delay(1000);
+    delay(1000);
     myGLCD.clrScr();
     myGLCD.print(&quot;Hello Arduino&quot;,CENTER,16);
     delay(1000);
@@ -184,15 +184,126 @@ void loop()
 <li><p>常用函数<br>LCD5110(SCK,MOSI,DC,RST,CS);//设置引脚<br>InitLCD([contrast]);//初始化<br>setContrast(contrast);//设置对比度(0-127)<br>enableSleep();//设置睡眠状态<br>disableSleep();//关闭睡眠状态<br>clrScr();//清屏<br>clrRow(row[,start_x[,end_x]]);//清除行的一部分或者整行<br>invert(mode);//倒置<br>print(st,x,y);//显示字符串<br>printNumI(num,x,y[,length[,filler]]);//显示整数<br>printNumF(num,dec,x,y[,divider[,length[,filler]]]);//显示小数<br>setFont(fontname);//设置字体大小<br>drawBitmap(x,y,data,sx,sy);//用于显示自定义字符</p>
 </li>
 </ul>
-<h1 id="进阶-PART2"><a href="#进阶-PART2" class="headerlink" title="进阶 PART2"></a>进阶 PART2</h1><p>未完待续</p>
+<hr>
+<h1 id="进阶-PART2"><a href="#进阶-PART2" class="headerlink" title="进阶 PART2"></a>进阶 PART2</h1><p>PART2中，将使用中断对屏幕上的内容进行修改</p>
+<ul>
+<li>Arduino 中断引脚的说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">BOARD</th>
+<th style="text-align:center">DIGITAL PINS USABLE FOR INTERRUPTS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Uno, Nano, Mini, other 328-based</td>
+<td style="text-align:center">2, 3</td>
+</tr>
+<tr>
+<td style="text-align:center">Mega, Mega2560, MegaADK</td>
+<td style="text-align:center">2, 3, 18, 19, 20, 21</td>
+</tr>
+<tr>
+<td style="text-align:center">Micro, Leonardo, other 32u4-based</td>
+<td style="text-align:center">0, 1, 2, 3, 7</td>
+</tr>
+<tr>
+<td style="text-align:center">Zero</td>
+<td style="text-align:center">all digital pins, except 4</td>
+</tr>
+<tr>
+<td style="text-align:center">MKR1000 Rev.1</td>
+<td style="text-align:center">0, 1, 4, 5, 6, 7, 8, 9, A1, A2</td>
+</tr>
+<tr>
+<td style="text-align:center">Due</td>
+<td style="text-align:center">all digital pins</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">all digital pins (Only pins 2, 5, 7, 8, 10, 11, 12, 13 work with CHANGE)</td>
+</tr>
+</tbody>
+</table>
+<p>也就是说，根据你使用的板子不同，你能使用中断的引脚也不相同。</p>
+<p>我用的板子是UNO，所以我可以使用的引脚为 2 或者 3</p>
+<ul>
+<li>语法<pre><code>attachInterrupt(interrupt, function, mode)
+</code></pre></li>
+</ul>
+<ol>
+<li>interrupt:中断引脚号。</li>
+<li>function:中断发生时调用的函数，必须没有参数。</li>
+<li>mode:中断触发模式。</li>
+</ol>
+<p>interrupt取值，对于较新版本的arduino IDE（我是用的1.5.8）支持digitalPinToInterrupt(int)函数，使用者可以把上表中的引脚号直接作为参数。如果使用的是较早版本的IDE，则不支持此函数，则需要根据下表填写中断引脚号的值。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">BOARD</th>
+<th style="text-align:center">INT.0</th>
+<th style="text-align:center">INT.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Uno, Ethernet</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<p>也就是说，如果使用引脚2，则interrupt值为0，使用引脚3，则interrupt值为1。</p>
+<p>mode取值：</p>
+<ol>
+<li>LOW 当引脚电平为低时触发</li>
+<li>CHANGE 当引脚电平发生变化时触发</li>
+<li>RISING 当引脚电平升高时触发</li>
+<li>FALLING 当引脚电平由高到低时触发（UNO板不支持该模式）</li>
+<li>HIGH 当引脚电平为高时触发</li>
+</ol>
+<ul>
+<li><p>接线<br>LCD屏幕接线与PART1中相同，只需在面包板上额外增加一个开关。入下图<br><img src="http://res.cloudinary.com/each76/image/upload/v1520935545/arduino/2018313180619.jpg" alt="unoInterrupt"></p>
+</li>
+<li><p>示例程序</p>
+<pre><code>#include &lt;LCD5110_Basic.h&gt;
 
+LCD5110 myGLCD(3,4,5,6,7);
+extern uint8_t SmallFont[];
+extern uint8_t MediumNumbers[];
+extern uint8_t BigNumbers[];
+int interruptPin = 2;
+void setup()
+{
+    myGLCD.InitLCD(); //Intializing LCD
+    attachInterrupt(digitalPinToInterrupt(interruptPin), sayHello, CHANGE);
+}
+void loop()
+{
+    myGLCD.setFont(SmallFont);
+    myGLCD.print(&quot;Hello World&quot;,CENTER,16);
+    delay(1000);
+    myGLCD.clrScr();
+}
+
+void sayHello() {
+    myGLCD.clrScr();
+    myGLCD.print(&quot;Hello Bro&quot;,CENTER,16);
+    delay(5000);
+}
+</code></pre><p>实验效果<br><img src="http://res.cloudinary.com/each76/image/upload/v1520937814/arduino/201831318281720180313_184208.gif" alt="unoInterruptgif"></p>
+</li>
+</ul>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjeo9vqta00008xn7z25j0y2z" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/03/12/:category/arduinolcd/" data-id="cjepj4w6o0000fan700w5g0u1" class="article-share-link">Teilen</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中断/">中断</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
 
     </footer>
   </div>
@@ -262,7 +373,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/27/:category/buildss/" data-id="cjeo9vqup00048xn7y18oi3bu" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/27/:category/buildss/" data-id="cjepj4w840004fan7q32vij10" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -309,7 +420,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
       
     </div>
     <footer class="article-footer">
-      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cjeo9vqts00018xn7aje93ur2" class="article-share-link">Teilen</a>
+      <a data-url="each76.com/2018/02/26/hello-world/" data-id="cjepj4w7a0001fan7uvqxlb20" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -339,7 +450,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arduino/">Arduino</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
     </div>
   </div>
 
@@ -349,7 +460,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a>
+      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a>
     </div>
   </div>
 
